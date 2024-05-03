@@ -12,7 +12,35 @@
     <head>
         <h1>Ice Cream Shop</h1>
     </head>
-
+<section>
+<form id="iceCreamform">
+    <div>
+        <label for="numberOfScoops">Number of scoops </label>
+       <input id="numberOfScoops" name="numberOfScoops" type="number" min="1" max="4" required>
+    </div>
+    <div>
+        <input id="yesCone" type="radio" name="coneOrCup" value="yesCone" checked>
+        <label  for="cone">Cone</label>
+        <input id="yesCup" type="radio" name="coneOrCup" value="yesCup">
+        <label  for="cup">Cup</label>
+    </div>
+    <div id="toppingsList">
+        <h4 >Toppings</h4>
+        <div >
+            <input  type="checkbox" name="sprinkles" id="sprinkles">
+            <label  for="sprinkles">Sprinkles ($0.50)</label>
+            <input  type="checkbox" name="whippedCream" id="whippedCream">
+            <label  for="whippedCream">Whipped Cream ($0.25)</label>
+            <input type="checkbox" name="hotFudge" id="hotFudge">
+            <label  for="hotFudge">Hot Fudge ($1.25)</label>
+            <input type="checkbox" name="cherry" id="cherry">
+            <label  for="cherry">Cherry ($0.25)</label>
+        </div>
+    </div>
+    <button>Submit Order</button>
+</form>
+<div id="results"></div>
+</section>
 
 
     <!-- bootstrap JS file -->
