@@ -5,11 +5,11 @@ window.onload = function(){
     let toppingsList = document.querySelector('#toppingsList')
     let radioButtonCone = document.querySelector('#yesCone')
     let radioButtonCup = document.querySelector('#yesCup')
-
+    toppingsList.style.display = 'none'
     iceCreamform.addEventListener('submit',  calculateIceCreamOrder)
     radioButtonCup.addEventListener('click', showToppings)
     radioButtonCone.addEventListener('click', showToppings)
-    toppingsList.style.display = 'none'
+    
 }
 // created a function for showing list of toppings when cup is checked or hide them when cone is checked
 function showToppings(){
@@ -30,12 +30,15 @@ function showToppings(){
 function calculateIceCreamOrder(event){
     event.preventDefault()
     let theForm = event.target
+
+
     let results = document.querySelector('#results')
     let totalnumberOfScoops =  Number(theForm.numberOfScoops.value) 
     let totalnumberOfScoopsPrice = 2.25
     let toppings = 0
     let message 
-    
+    let tax = (7/100)
+
     console.log(totalnumberOfScoopsPrice)
    
     if (totalnumberOfScoops > 1){
@@ -58,23 +61,27 @@ function calculateIceCreamOrder(event){
             toppings += 0.25
         }
         let totalCost = totalnumberOfScoopsPrice + toppings
+        
         message = `
         <div>Number of scoops: ${totalnumberOfScoops}</div>
        <div>You ordered a cup</div>
        <div>Toppings price: $${toppings.toFixed(2)}</div>
-       <div >Total Due: $${totalCost.toFixed(2)}</div>
+       <div >Base price: $${(totalCost)}</div>
+       <div>Tax is : $${(totalCost*tax).toFixed(2)}</div>
+       <div >Total Due: $${(totalCost*1.07).toFixed(2)}</div>
         `
        
     }
     if(theForm.yesCone.checked){
-        let totalCost = totalnumberOfScoopsPrice + toppings
-       
+        let totalCost = totalnumberOfScoopsPrice 
+        
         
         message = `
         <div>Number of scoops: ${totalnumberOfScoops}</div>
        <div>You ordered a cone</div>
-      
-       <div >Total Due: $${totalCost.toFixed(2)}</div>
+       <div >Base price: $${(totalCost)}</div>
+       <div>Tax is : $${(totalCost*tax).toFixed(2)}</div>
+       <div >Total Due: $${(totalCost*1.07).toFixed(2)}</div>
         `
        
     }
