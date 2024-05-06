@@ -1,19 +1,31 @@
 "use strict"
+// 7% taxes
 window.onload = function(){
     let iceCreamform = document.querySelector('#iceCreamform')
-        let toppingsList = document.querySelector('#toppingsList')
-        toppingsList.style.display = 'none'
-    
-    iceCreamform.addEventListener('submit',  calculateIceCreamOrder)
-    iceCreamform.addEventListener('click', function(){
-        if(document.querySelector('#yesCup').checked){
-            toppingsList.style.display = 'block'
-        }else{
-            toppingsList.style.display = 'none'
+    let toppingsList = document.querySelector('#toppingsList')
+    let radioButtonCone = document.querySelector('#yesCone')
+    let radioButtonCup = document.querySelector('#yesCup')
 
-        }
-    })
+    iceCreamform.addEventListener('submit',  calculateIceCreamOrder)
+    radioButtonCup.addEventListener('click', showToppings)
+    radioButtonCone.addEventListener('click', showToppings)
+    toppingsList.style.display = 'none'
 }
+// created a function for showing list of toppings when cup is checked or hide them when cone is checked
+function showToppings(){
+    console.log('Toppings function called');
+    let toppingsList = document.querySelector('#toppingsList')
+    if(document.querySelector('#yesCup').checked  ){
+        console.log(' Cup is checked');
+        toppingsList.style.display = 'block'
+       
+    } else {
+        toppingsList.style.display = 'none'
+    }
+    
+}
+
+
 
 function calculateIceCreamOrder(event){
     event.preventDefault()
@@ -52,7 +64,7 @@ function calculateIceCreamOrder(event){
        <div>Toppings price: $${toppings.toFixed(2)}</div>
        <div >Total Due: $${totalCost.toFixed(2)}</div>
         `
-        results.innerHTML = message
+       
     }
     if(theForm.yesCone.checked){
         let totalCost = totalnumberOfScoopsPrice + toppings
